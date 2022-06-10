@@ -11,7 +11,7 @@ export default class ProductModel {
 
   public create = async (name: string, amount: string): Promise<Product> => {
     const query = `INSERT INTO Trybesmith.Products (name, amount) 
-    VALUES (?,?,?);`;
+    VALUES (?,?);`;
     const [product] = await connection.execute<ResultSetHeader>(query, [name, amount]);
     return { id: product.insertId, name, amount };
   };
